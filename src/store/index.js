@@ -4,18 +4,22 @@ export default createStore({
     state: {
         firstName: "Mohammad",
         lastName: "Tasleem",
-        favorites: []
+        notes: []
     },
     getters: {
-        fullName: function (state) {
-            return `${state.firstName} ${state.lastName}`
+        totalNotes(state) {
+            return state.notes.length
+        }
+    },
+    mutations: {
+        SAVE_NOTES(state, payload) {
+            state.notes.push(payload)
         }
     },
     actions: {
-        addToFavorites(context, payload) {
-            context.commit('UPDATE_FAVORITES', payload)
+        saveNotes(context, payload) {
+            context.commit('SAVE_NOTES', payload)
         }
     },
-    mutations: {}
 
 })

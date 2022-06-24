@@ -1,25 +1,21 @@
 <template>
   <div class="wrapper">
-    <p>store - {{ JSON.stringify($store.getters.fullName) }}</p>
-    <div v-for="airport in airports" :key="airport.abbreviation">
-      <AirportCard :airport="airport" />
-    </div>
+    <p>store - {{ JSON.stringify($store.state.firstName) }}</p>
+    <MyNotes />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import AirportCard from "./components/AirportCard.vue";
-import allAirports from "./data/airport.js";
+// import { ref } from "vue";
+import MyNotes from "./components/Notes.vue";
 export default {
   name: "App",
   components: {
-    AirportCard,
+    MyNotes,
   },
-  setup() {
-    const airports = ref(allAirports);
-    return { airports };
-  },
+  // setup() {
+
+  // },
 };
 </script>
 
