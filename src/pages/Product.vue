@@ -29,7 +29,10 @@ export default {
   name: "ProductId",
   props: ["id"],
   computed: {
-    ...mapState(["product"]),
+    ...mapState("product", ["product"]),
+    // ...mapState({
+    //   product: (state) => state.product.product,
+    // }),
   },
   data() {
     return {
@@ -40,7 +43,8 @@ export default {
     this.getProduct(this.id);
   },
   methods: {
-    ...mapActions(["addToCart", "getProduct"]),
+    ...mapActions("product", ["getProduct"]),
+    ...mapActions("cart", ["addToCart"]),
     addToProductIntoCart() {
       this.addToCart({
         ...this.product,

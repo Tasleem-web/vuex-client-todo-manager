@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <pre>carts - {{ JSON.stringify(carts) }}</pre> -->
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
         <div class="nav navbar-nav">
@@ -67,11 +66,21 @@ export default {
   components: {},
   name: "NavBar",
   computed: {
-    ...mapState(["carts"]),
-    ...mapGetters(["countCartItems", "grandTotal"]),
+    ...mapState({
+      carts: (state) => state.cart.carts,
+    }),
+    ...mapGetters("cart", ["countCartItems", "grandTotal"]),
+    // ...mapGetters({
+    //   countCartItems:'cart/countCartItems',
+    //   grandTotal:'cart/grandTotal',
+    // })
   },
   methods: {
-    ...mapActions(["removeItem", "emptyCart"]),
+    ...mapActions("cart", ["removeItem", "emptyCart"]),
+    // ...mapActions({
+    //   removeItem: "cart/removeItem",
+    //   emptyCart: "cart/emptyCart",
+    // }),
   },
 };
 </script>
