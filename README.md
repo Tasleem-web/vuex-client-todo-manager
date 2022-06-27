@@ -1,5 +1,7 @@
 # vuex-todo-manager
 
+setup vuex with modules wise
+
 ## Project setup
 ```
 yarn install

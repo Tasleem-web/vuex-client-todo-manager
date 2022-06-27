@@ -1,25 +1,12 @@
 import { createStore } from 'vuex'
+import state from "./state";
+import * as getters from './getters'
+import * as mutations from './mutations'
+import * as actions from './actions'
 
 export default createStore({
-    state: {
-        firstName: "Mohammad",
-        lastName: "Tasleem",
-        notes: []
-    },
-    getters: {
-        totalNotes(state) {
-            return state.notes.length
-        }
-    },
-    mutations: {
-        SAVE_NOTES(state, payload) {
-            state.notes.push(payload)
-        }
-    },
-    actions: {
-        saveNotes(context, payload) {
-            context.commit('SAVE_NOTES', payload)
-        }
-    },
-
+    state,
+    getters,
+    mutations,
+    actions
 })
