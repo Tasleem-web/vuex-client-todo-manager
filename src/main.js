@@ -1,10 +1,9 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { createApp } from 'vue'
+import Antd from 'ant-design-vue';
 import App from './App.vue'
 import store from './store'
 import routes from "./routes";
 
-createApp(App).use(routes).use(store).mount('#app')
+import 'ant-design-vue/dist/antd.css';
 
-import "bootstrap/dist/js/bootstrap.js";
+createApp(App).use(Antd).use(routes).use(store).mount('#app')

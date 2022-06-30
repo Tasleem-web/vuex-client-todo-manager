@@ -1,88 +1,56 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <div class="container">
-        <div class="nav navbar-nav">
-          <router-link to="/" class="nav-tem nav-link active">Home</router-link>
-          <a class="nav-item nav-link" href="#">Product</a>
-        </div>
-
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ countCartItems }} Cart
-            </button>
-            <div
-              class="dropdown-menu p-2"
-              aria-labelledby="dropdownMenuButton"
-              style="min-width: 320px; right: 0; left: auto"
-            >
-              <div @click="$event.stopPropagation()">
-                <template v-for="cart in carts" :key="cart.id">
-                  <div class="px-2 d-flex justify-content-between">
-                    <div>
-                      <strong class="text-truncate">{{ cart?.title }}</strong>
-                      <br />
-                      {{ cart?.quantity }} x ${{ cart?.price }}
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="link-primary badge badge-secondary"
-                        @click="removeItem(cart.id)"
-                        >remove</a
-                      >
-                    </div>
-                  </div>
-                  <hr />
-                </template>
-                <div class="d-flex justify-content-between">
-                  <span>Total: ${{ grandTotal }}</span>
-                  <a
-                    href="#"
-                    @click="emptyCart"
-                    :class="{ disabled: countCartItems < 1 }"
-                    >Clear Cart</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
+  <a-menu v-model:selectedKeys="current" mode="horizontal">
+    <a-menu-item key="mail">
+      <template #icon>
+        <mail-outlined />
+      </template>
+      <router-link to="/">Home</router-link>
+    </a-menu-item>
+    <a-menu-item key="app">
+      <template #icon>
+        <appstore-outlined />
+      </template>
+      <router-link to="/product">Product</router-link>
+    </a-menu-item>
+    <a-menu-item key="signin">
+      <template #icon>
+        <login-outlined />
+      </template>
+      <router-link to="/login">Sign In</router-link>
+    </a-menu-item>
+    <a-menu-item key="cart">
+      <template #icon>
+        <shopping-cart-outlined />
+      </template>
+      <a-badge count="5">
+        <router-link to="/cart">Cart</router-link>
+      </a-badge>
+    </a-menu-item>
+  </a-menu>
 </template>
-
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { ref } from "vue";
+import {
+  MailOutlined,
+  AppstoreOutlined,
+  LoginOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons-vue";
 export default {
-  components: {},
   name: "NavBar",
-  computed: {
-    ...mapState({
-      carts: (state) => state.cart.carts,
-    }),
-    ...mapGetters("cart", ["countCartItems", "grandTotal"]),
-    // ...mapGetters({
-    //   countCartItems:'cart/countCartItems',
-    //   grandTotal:'cart/grandTotal',
-    // })
+  components: {
+    MailOutlined,
+    LoginOutlined,
+    AppstoreOutlined,
+    // SettingOutlined,
+    ShoppingCartOutlined,
   },
-  methods: {
-    ...mapActions("cart", ["removeItem", "emptyCart"]),
-    // ...mapActions({
-    //   removeItem: "cart/removeItem",
-    //   emptyCart: "cart/emptyCart",
-    // }),
+
+  setup() {
+    const current = ref(["mail"]);
+    return {
+      current,
+    };
   },
 };
 </script>
-
-<style scoped></style>
