@@ -1,5 +1,9 @@
-export const addToCart = ({ commit }, product) => {
+export const addToCart = ({ commit, dispatch }, product) => {
     commit('ADD_TO_CART', product)
+    dispatch('addNotification', {
+        type: 'success',
+        message: "Product added into cart."
+    }, { root: true })
 }
 
 export const removeItem = ({ commit }, productId) => {

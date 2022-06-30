@@ -1,19 +1,22 @@
 <template>
   <NavBar />
   <div class="container">
-    <router-view></router-view>
+    <ProductList />
+    <!-- <router-view></router-view> -->
   </div>
-  <!-- <NotificationsList /> -->
+  <NotificationsList />
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
-// import NotificationsList from "./components/NotificationsList.vue";
+import NotificationsList from "./components/NotificationsList.vue";
+import ProductList from "./components/ProductList.vue";
 export default {
   name: "App",
   components: {
     NavBar,
-    // NotificationsList,
+    NotificationsList,
+    ProductList,
   },
   // setup() {
 
