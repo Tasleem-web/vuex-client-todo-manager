@@ -1,22 +1,39 @@
 <template>
-  <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields
-    below.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div> -->
-  <div class="alert alert-success" role="alert">
-    This is a light alert—check it out!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  <div :class="typeClass" class="alert-dismissible fade show" role="alert">
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+    {{ notification?.message }}
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "NotificationMessage",
+  props: ["notification"],
+  data() {
+    return {
+      timeout: null,
+    };
+  },
+  computed: {
+    typeClass() {
+      return `alert alert-${this.notification.type}`;
+    },
+  },
+  methods: mapActions(["removeNotification"]),
+  created() {
+    this.timeout = setTimeout(() => {
+      this.removeNotification(this.notification);
+    }, 3000);
+  },
+  beforeUnmount() {
+    clearTimeout(this.timeout);
+  },
 };
 </script>
 

@@ -1,10 +1,10 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { createApp } from 'vue'
 import App from './App.vue'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 import store from './store'
 import routes from "./routes";
 
-createApp(App).use(routes).use(store).mount('#app')
+createApp(App).use(routes).use(store).mount('#app');
 
-import "bootstrap/dist/js/bootstrap.js";
+// https://getbootstrap.com/docs/5.0/components/alerts/
