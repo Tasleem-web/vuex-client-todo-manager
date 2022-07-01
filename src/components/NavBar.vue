@@ -1,10 +1,19 @@
 <template>
+  <!-- <pre>{{ JSON.stringify() }}</pre> -->
   <div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
         <div class="nav navbar-nav">
-          <router-link to="/" class="nav-tem nav-link active">Home</router-link>
-          <a class="nav-item nav-link" href="#">Product</a>
+          <template v-for="menu in NavBarMenu" :key="menu.name">
+            <router-link
+              :to="menu.path"
+              class="nav-tem nav-link"
+              :class="{ active: menu.active }"
+              @click="activeMenu(menu.id)"
+            >
+              {{ menu.name }}
+            </router-link>
+          </template>
         </div>
 
         <div>
@@ -62,9 +71,22 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
+import NavBarMenu from "../assets/menu.json";
 export default {
-  components: {},
+  components: {
+    // NavBarMenu,
+  },
   name: "NavBar",
+  data() {
+    return {
+      NavBarMenu: NavBarMenu.filter(
+        (menu) =>
+          (menu.id = (
+            Math.random().toString(36) + Date.now().toString(36)
+          ).substr(2))
+      ),
+    };
+  },
   computed: {
     ...mapState({
       carts: (state) => state.cart.carts,
@@ -81,6 +103,12 @@ export default {
     //   removeItem: "cart/removeItem",
     //   emptyCart: "cart/emptyCart",
     // }),
+    activeMenu(id) {
+      this.NavBarMenu = this.NavBarMenu.filter((menu) => {
+        menu["active"] = menu.id === id ? true : false;
+        return menu;
+      });
+    },
   },
 };
 </script>
