@@ -2,11 +2,11 @@
   <div class="col-3 mt-3">
     <div class="card h-100 text-left">
       <div class="text-center">
-        <img class="img" :src="product?.image" alt="" />
+        <ProductImageSlider :product="product.files" :uniqueKey="product._id" />
       </div>
       <div class="card-body">
         <h4 class="card-title">
-          <router-link :to="{ name: 'product', params: { id: product?.id } }">
+          <router-link :to="{ name: 'product', params: { id: product?._id } }">
             {{ product?.title }}
           </router-link>
         </h4>
@@ -24,9 +24,13 @@
 
 <script>
 import { mapActions } from "vuex";
+import ProductImageSlider from "./ProductImageSlider.vue";
 export default {
   name: "ProductCart",
   props: ["product"],
+  components: {
+    ProductImageSlider,
+  },
   methods: {
     ...mapActions("cart", ["addToCart"]),
     addToProductIntoCart() {

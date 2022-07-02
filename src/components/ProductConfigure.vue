@@ -1,87 +1,143 @@
 <template>
-  <div class="inputDnD">
-    <div class="form-group">
-      <input
-        type="file"
-        class="form-control-file text-danger font-weight-bold"
-        id="inputFile"
-        data-title="Drag and drop a file"
-        :v-model="state.upload"
-      />
-    </div>
+  <div class="wrapper">
+    <form
+      class="row g-2"
+      :model="formState"
+      name="basic"
+      autocomplete="off"
+      @submit.prevent="handleSubmit"
+    >
+      <!-- File Upload -->
+      <div class="row col-md-12">
+        <div class="col-md-6">
+          <FileUpload />
+        </div>
+        <div class="col-md-6">
+          <ShowFileUploaded />
+        </div>
+      </div>
+      <!-- Title -->
+      <div class="col-md-12">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          v-model="formState.title"
+        />
+      </div>
+      <!-- Description -->
+      <div class="col-md-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          :rows="3"
+          type="text"
+          class="form-control"
+          id="description"
+          v-model="formState.description"
+        />
+      </div>
+
+      <!-- price -->
+      <div class="col-md-12">
+        <label for="price" class="form-label">₹Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          v-model="formState.price"
+        />
+      </div>
+
+      <!-- Continents -->
+      <div class="col-md-12">
+        <label for="continent" class="form-label">Continents</label>
+        <select
+          id="continent"
+          class="form-select"
+          aria-label="Default select example"
+          v-model="formState.continent"
+        >
+          <!-- <option selected>Open this select menu</option> -->
+          <option
+            v-for="continent in Continents"
+            :key="continent.key"
+            :value="continent.value"
+          >
+            {{ continent.value }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
-
 <script>
-import { reactive } from "@vue/reactivity";
+import { reactive, ref } from "vue";
+import FileUpload from "./FileUpload.vue";
+import ShowFileUploaded from "./ShowFileUploaded.vue";
+import { mapState, mapActions } from "vuex";
+// import router from "vue-router";
+
 export default {
   name: "ProductConfiguration",
+  components: {
+    FileUpload,
+    ShowFileUploaded,
+  },
   setup() {
-    const state = reactive({
-      upload: "",
-      errors: "",
-    });
+    const Continents = ref([
+      { key: 1, value: "Africa", label: "Africa" },
+      { key: 2, value: "Europe", label: "Europe" },
+      { key: 3, value: "Asia", label: "Asia" },
+      { key: 4, value: "North America", label: "North America" },
+      { key: 5, value: "South America", label: "South America" },
+      { key: 6, value: "Australia", label: "Australia" },
+      { key: 7, value: "Antarctica", label: "Antarctica" },
+      { key: 8, value: "India", label: "India" },
+    ]);
+
+    const initialControlsValue = {
+      title: "",
+      description: "",
+      price: 0,
+      continent: "India",
+    };
+
+    const formState = reactive({ ...initialControlsValue });
     return {
-      state,
+      initialControlsValue,
+      formState,
+      Continents,
     };
   },
-  methods: {
-    // readUrl() {
-    //   if (input.files && input.files[0]) {
-    //     let reader = new FileReader();
-    //     reader.onload = (e) => {
-    //       // let imgData = e.target.result;
-    //       let imgName = input.files[0].name;
-    //       input.setAttribute("data-title", imgName);
-    //       console.log(e.target.result);
-    //     };
-    //     reader.readAsDataURL(input.files[0]);
-    //   }
-    // },
+  computed: {
+    ...mapState("product", ["files"]),
+    // ...mapState({
+    //   getFiles: (state) => state.product.files,
+    // }),
   },
-  mounted() {
-    console.log(this.state);
+  methods: {
+    ...mapActions("product", ["addProduct"]),
+
+    handleSubmit() {
+      // this.addProduct({
+      //   ...this.formState,
+      //   files: this.files,
+      // });
+      // Object.assign(this.formState, this.initialControlsValue);
+      this.$router.push("/");
+    },
   },
 };
 </script>
 
 <style scoped>
-.inputDnD {
+.wrapper {
   width: 70%;
   margin: 0 auto;
-}
-.inputDnD .form-control-file {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 6em;
-  outline: none;
-  visibility: hidden;
-  cursor: pointer;
-  background-color: #c61c23;
-  box-shadow: 0 0 5px solid currentColor;
-}
-.inputDnD .form-control-file:before {
-  content: attr(data-title);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  min-height: 6em;
-  line-height: 2em;
-  padding-top: 1.5em;
-  opacity: 1;
-  visibility: visible;
-  text-align: center;
-  border: 0.25em dashed currentColor;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  overflow: visible;
-}
-.inputDnD .form-control-file:hover:before {
-  border-style: solid;
-  box-shadow: inset 0px 0px 0px 0.25em currentColor;
-}
-
-body {
-  background-color: #1f1f1f;
+  margin-top: 50px;
 }
 </style>

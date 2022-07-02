@@ -5,6 +5,9 @@ import "bootstrap";
 import store from './store'
 import routes from "./routes";
 
-createApp(App).use(routes).use(store).mount('#app');
+createApp(App)
+    .use(routes)
+    .use(store)
+    .mount('#app');
 
 // https://getbootstrap.com/docs/5.0/components/alerts/

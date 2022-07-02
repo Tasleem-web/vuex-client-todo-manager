@@ -1,5 +1,4 @@
 <template>
-  <!-- <pre>{{ JSON.stringify() }}</pre> -->
   <div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container">
@@ -81,9 +80,8 @@ export default {
     return {
       NavBarMenu: NavBarMenu.filter(
         (menu) =>
-          (menu.id = (
-            Math.random().toString(36) + Date.now().toString(36)
-          ).substr(2))
+          (menu.id = // Generate Dynamic id
+            (Math.random().toString(36) + Date.now().toString(36)).substr(2))
       ),
     };
   },
