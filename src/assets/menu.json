@@ -1,12 +1,14 @@
 [
-    {
-        "name": "Home",
-        "path": "/",
-        "active": true
-    },
-    {
-        "name": "Product Configuration",
-        "path": "/product/configuration",
-        "active": false
-    }
+  {
+    "name": "Home",
+    "path": "/",
+    "active": true,
+    "title": "home"
+  },
+  {
+    "name": "Product Configuration",
+    "path": "/product/configuration",
+    "active": false,
+    "title": "product"
+  }
 ]
