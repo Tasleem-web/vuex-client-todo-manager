@@ -25,3 +25,17 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+1) NavBar
+2) hero banner
+about us
+services
+call to action
+partners
+achievements
+Portfolio
+pricing
+FAQ
+contactus
+footer
+
