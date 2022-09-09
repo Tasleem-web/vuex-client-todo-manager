@@ -1,165 +1,112 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" :class="headerScrolled">
     <div class="container-fluid">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <template v-for="menu in NavBarMenu" :key="menu.name">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page">
-                <router-link
-                  :to="menu.path"
-                  class="nav-tem nav-link"
-                  :class="{ active: menu.title === activeRoute }"
-                  @click="activeMenu(menu.title)"
+      <div class="row justify-content-center">
+        <div
+          class="col-xl-9 d-flex align-items-center justify-content-lg-between"
+        >
+          <h1 class="logo me-auto me-lg-0">
+            <router-link to="/">LOGO</router-link>
+          </h1>
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li v-for="(menu, index) in menus" :key="index">
+                <a
+                  class="nav-link scrollto"
+                  :class="menu.active ? ' active' : ''"
+                  :href="'#' + menu.name"
+                  @click="activeMene(menu)"
+                  >{{ menu.label }}</a
                 >
-                  {{ menu.name }}
-                </router-link>
-              </a>
-            </li>
-          </template>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li> -->
-          <!-- <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown link
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </li>
+              <!-- <li><a class="nav-link scrollto" href="#about">About</a></li>
+              <li>
+                <a class="nav-link scrollto" href="#services">Services</a>
+              </li>
+              <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+              <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+
+              <!-- <li>
+                <a class="nav-link scrollto" href="#portfolio">Portfolio</a>
+              </li> -->
+              <!-- <li class="dropdown">
+                <a href="#"
+                  ><span>Drop Down</span> <i class="bi bi-chevron-down"></i
+                ></a>
+                <ul>
+                  <li><a href="#">Drop Down 1</a></li>
+                  <li class="dropdown">
+                    <a href="#"
+                      ><span>Deep Drop Down</span>
+                      <i class="bi bi-chevron-right"></i
+                    ></a>
+                    <ul>
+                      <li><a href="#">Deep Drop Down 1</a></li>
+                      <li><a href="#">Deep Drop Down 2</a></li>
+                      <li><a href="#">Deep Drop Down 3</a></li>
+                      <li><a href="#">Deep Drop Down 4</a></li>
+                      <li><a href="#">Deep Drop Down 5</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Drop Down 2</a></li>
+                  <li><a href="#">Drop Down 3</a></li>
+                  <li><a href="#">Drop Down 4</a></li>
+                </ul>
+              </li> -->
             </ul>
-          </li> -->
-        </ul>
-      </div>
-      <div class="d-flex align-center">
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ countCartItems }} Cart
-            </button>
-            <div
-              class="dropdown-menu p-2"
-              aria-labelledby="dropdownMenuButton"
-              style="min-width: 320px; right: 0; left: auto"
-            >
-              <div @click="$event.stopPropagation()">
-                <template v-for="cart in carts" :key="cart.id">
-                  <div class="px-2 d-flex justify-content-between">
-                    <div>
-                      <strong class="text-truncate">{{ cart?.title }}</strong>
-                      <br />
-                      {{ cart?.quantity }} x ${{ cart?.price }}
-                    </div>
-                    <div>
-                      <a
-                        href="#"
-                        class="link-primary badge badge-secondary"
-                        @click="removeItem(cart.id)"
-                        >remove</a
-                      >
-                    </div>
-                  </div>
-                  <hr />
-                </template>
-                <div class="d-flex justify-content-between">
-                  <span>Total: ${{ grandTotal }}</span>
-                  <a
-                    href="#"
-                    @click="emptyCart"
-                    :class="{ disabled: countCartItems < 1 }"
-                    >Clear Cart</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="nav navbar-nav">
-          <router-link
-            to="/sign-in"
-            class="nav-tem nav-link"
-            :class="{ active: 'login' === activeRoute }"
-            @click="activeMenu('login')"
-          >
-            Sign in
-          </router-link>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+          <!-- .navbar -->
+
+          <!-- <a href="#about" class="get-started-btn scrollto">Get Started</a> -->
         </div>
       </div>
     </div>
-  </nav>
+  </header>
+  <!-- End Header -->
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
-import NavBarMenu from "../assets/menu.json";
+import { ref } from "vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
     // NavBarMenu,
   },
   name: "NavBar",
-  data() {
+  computed: {
+    ...mapState(["headerScrolled"]),
+  },
+  setup() {
+    const menuItems = [
+      { name: "hero", label: "Home", active: true },
+      { name: "about", label: "About", active: false },
+      { name: "services", label: "Services", active: false },
+      { name: "pricing", label: "Pricing", active: false },
+      { name: "contact", label: "Contact", active: false },
+    ];
+    var menus = ref(menuItems);
+
+    function activeMene(menu) {
+      if (menu) {
+        for (let i = 0; i < menus.value.length; i++) {
+          if (menus.value[i].name === menu.name) {
+            menus.value[i].active = true;
+          } else {
+            menus.value[i].active = false;
+          }
+        }
+      }
+    }
     return {
-      NavBarMenu: NavBarMenu.filter(
-        (menu) =>
-          (menu.id = // Generate Dynamic id
-            (Math.random().toString(36) + Date.now().toString(36)).substr(2))
-      ),
-      activeRoute: "home",
+      activeMene,
+      menus,
     };
   },
-  computed: {
-    ...mapState({
-      carts: (state) => state.cart.carts,
-    }),
-    ...mapGetters("cart", ["countCartItems", "grandTotal"]),
-    // ...mapGetters({
-    //   countCartItems:'cart/countCartItems',
-    //   grandTotal:'cart/grandTotal',
-    // })
-  },
-  methods: {
-    ...mapActions("cart", ["removeItem", "emptyCart"]),
-    // ...mapActions({
-    //   removeItem: "cart/removeItem",
-    //   emptyCart: "cart/emptyCart",
-    // }),
-    activeMenu(title) {
-      this.activeRoute = title;
-      // this.NavBarMenu = this.NavBarMenu.filter((menu) => {
-      //   menu["active"] = menu.id === id ? true : false;
-      //   return menu;
-      // });
-    },
+  mounted() {
+    this.activeMene();
   },
 };
 </script>

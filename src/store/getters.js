@@ -1,0 +1,1 @@
+export const scrolled = state => state.headerScrolled;

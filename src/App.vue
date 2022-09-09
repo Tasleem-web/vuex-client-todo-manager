@@ -1,21 +1,19 @@
 <template>
   <div class="wrapper">
     <NavBar />
-    <div class="container">
-      <router-view></router-view>
-    </div>
-    <NotificationsList />
+    <router-view></router-view>
+    <FooterSection />
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
-import NotificationsList from "./components/NotificationsList.vue";
+import FooterSection from "./components/Footer.vue";
 export default {
   name: "App",
   components: {
     NavBar,
-    NotificationsList,
+    FooterSection,
   },
   // setup() {
 

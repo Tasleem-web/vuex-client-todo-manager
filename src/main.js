@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BootstrapVueIcons } from 'bootstrap'
 // import 'bootstrap-vue/dist/bootstrap-icons.min.css
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '../src/assets/css/style.css'
 
 import "bootstrap";
 import store from './store'
