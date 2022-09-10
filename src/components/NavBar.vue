@@ -9,7 +9,11 @@
           <h1 class="logo me-auto me-lg-0">
             <router-link to="/">LOGO</router-link>
           </h1>
-          <nav id="navbar" class="navbar order-last order-lg-0">
+          <nav
+            id="navbar"
+            class="navbar order-last order-lg-0"
+            :style="{ display: showExtra ? 'block' : 'none' }"
+          >
             <ul>
               <li v-for="(menu, index) in menus" :key="index">
                 <a
@@ -55,8 +59,11 @@
                 </ul>
               </li> -->
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>
+          <span
+            class="bi bi-list mobile-nav-toggle"
+            @click="menuIconToggle()"
+          ></span>
           <!-- .navbar -->
 
           <!-- <a href="#about" class="get-started-btn scrollto">Get Started</a> -->
@@ -78,6 +85,11 @@ export default {
   name: "NavBar",
   computed: {
     ...mapState(["headerScrolled"]),
+  },
+  data() {
+    return {
+      showExtra: true,
+    };
   },
   setup() {
     const menuItems = [
@@ -105,8 +117,21 @@ export default {
       menus,
     };
   },
-  mounted() {
-    this.activeMene();
+  created() {
+    this.myEventHandler();
+    window.addEventListener("resize", this.myEventHandler);
+  },
+  methods: {
+    myEventHandler() {
+      if (window.innerWidth >= 320 && window.innerWidth < 1024) {
+        this.showExtra = false;
+      } else {
+        this.showExtra = true;
+      }
+    },
+    menuIconToggle() {
+      this.showExtra = !this.showExtra;
+    },
   },
 };
 </script>
