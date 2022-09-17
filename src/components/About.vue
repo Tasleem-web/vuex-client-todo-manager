@@ -14,7 +14,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0">
           <div id="about-img"></div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 why-choose">
           <h2>Why Choose Scale Data Verse?</h2>
           <ul>
             <li>

@@ -129,12 +129,14 @@ h6 {
 }
 
 #header .logo {
-  font-size: 28px;
+  /* font-size: 28px;
   margin: 0;
   padding: 0;
   line-height: 1;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.5px; */
+  height: 70px;
+  margin: 0;
 }
 
 #header .logo a {
@@ -142,7 +144,8 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 40px;
+  /* max-height: 40px; */
+  border-radius: 4px;
 }
 
 @media (max-width: 992px) {
@@ -1335,11 +1338,11 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info {
-  width: 100%;
   background: #fff;
-  display: flex;
+  /* width: 100%; */
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .contact .info i {
@@ -1599,7 +1602,7 @@ section {
     width: 100%;
     position: absolute;
     left: 0;
-    top: 55px;
+    top: 100px;
     background-color: #2f5044;
     display: block;
   }
@@ -1612,6 +1615,18 @@ section {
   .navbar a,
   .navbar a:focus {
     padding: 10px 3px;
+  }
+  :is(.contact .info p, .contact .info h4) {
+    padding: 0;
+  }
+  :is(.contact .info .email, .contact .info .phone) {
+    margin-top: 10px;
+  }
+  .why-choose {
+    margin-top: 20px;
+  }
+  section {
+    padding: 20px 0;
   }
 }
 

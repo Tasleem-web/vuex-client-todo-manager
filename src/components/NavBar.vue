@@ -7,7 +7,13 @@
           class="col-xl-12 d-flex align-items-center justify-content-lg-between"
         >
           <h1 class="logo me-auto me-lg-0">
-            <router-link to="/">LOGO</router-link>
+            <router-link to="/">
+              <img
+                src="../../src/assets/img/logo.png"
+                width="100"
+                height="70"
+              />
+            </router-link>
           </h1>
           <nav
             id="navbar"
