@@ -1614,3 +1614,13 @@ section {
     padding: 10px 3px;
   }
 }
+
+.list-dev {
+  list-style: none;
+  text-align: left;
+}
+
+#footer h2 {
+  text-align: left;
+  padding-left: 2rem;
+}

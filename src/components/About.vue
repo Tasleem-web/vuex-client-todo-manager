@@ -6,7 +6,7 @@
         <h1 class="fw-bold">About Us</h1>
         <h3>
           We help enterprises to deliver digital transformation.
-          <b>SCALE Data Verse</b> was founded in 2021.
+          <b>SCALE Data Verse</b> was founded in 2022.
         </h3>
       </div>
 

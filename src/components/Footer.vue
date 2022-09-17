@@ -1,7 +1,26 @@
 <template>
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="container">
+    <div class="d-flex">
+      <div class="col-lg-4 col-md-6 mt-4">
+        <h2>Services</h2>
+        <ul class="list-dev">
+          <li>Frontend Development</li>
+          <li>Backend Development</li>
+          <li>Mobile App Development</li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mt-4">
+        <h2>Company</h2>
+        <ul class="list-dev">
+          <li><a class="text-white" href="#about">About us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mt-4">
+        <h2>Connect</h2>
+      </div>
+    </div>
+    <!-- <div class="container">
       <h3>KnightOne</h3>
       <p>
         Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi
@@ -15,16 +34,12 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
       <div class="copyright">
-        &copy; Copyright <strong><span>KnightOne</span></strong
+        &copy; Copyright <strong><span>Scale Date Verse Technologies</span></strong
         >. All Rights Reserved
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/knight-simple-one-page-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+    </div> -->
+    <div class="credits">
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </footer>
   <!-- End Footer -->

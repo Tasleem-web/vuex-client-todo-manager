@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div
-          class="col-xl-9 d-flex align-items-center justify-content-lg-between"
+          class="col-xl-12 d-flex align-items-center justify-content-lg-between"
         >
           <h1 class="logo me-auto me-lg-0">
             <router-link to="/">LOGO</router-link>
