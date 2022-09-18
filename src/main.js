@@ -16,4 +16,5 @@ createApp(App)
     .use(store)
     .mount('#app');
 
+import 'bootstrap/dist/js/bootstrap.js'
 // https://getbootstrap.com/docs/5.0/components/alerts/

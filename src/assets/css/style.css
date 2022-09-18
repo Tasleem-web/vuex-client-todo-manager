@@ -1639,3 +1639,10 @@ section {
   text-align: left;
   padding-left: 2rem;
 }
+
+.alert-custom-position {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 999;
+}
