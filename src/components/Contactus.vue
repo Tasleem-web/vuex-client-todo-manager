@@ -129,7 +129,7 @@
         </div>
       </div>
     </section>
-    <div class="alert-custom-position">
+    <div class="alert-custom-position" v-if="showAlert">
       <div
         class="alert-dismissible custom-alert fade"
         :class="showAlert ? 'alert alert-success show' : 'hide'"

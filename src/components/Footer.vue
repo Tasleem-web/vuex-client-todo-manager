@@ -1,8 +1,8 @@
 <template>
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="d-flex">
-      <div class="col-lg-4 col-md-6 mt-4">
+    <div class="rows">
+      <div class="col-lg-4 col-md-6 mt-4 col-xs-12">
         <h2>Services</h2>
         <ul class="list-dev">
           <li>Frontend Development</li>
@@ -10,13 +10,13 @@
           <li>Mobile App Development</li>
         </ul>
       </div>
-      <div class="col-lg-4 col-md-6 mt-4">
+      <div class="col-lg-4 col-md-6 mt-4 col-xs-12">
         <h2>Company</h2>
         <ul class="list-dev">
           <li><a class="text-white" href="#about">About us</a></li>
         </ul>
       </div>
-      <div class="col-lg-4 col-md-6 mt-4">
+      <div class="col-lg-4 col-md-6 mt-4 col-xs-12">
         <h2>Connect</h2>
       </div>
     </div>

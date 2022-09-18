@@ -136,6 +136,7 @@ export default {
       }
     },
     menuIconToggle() {
+      console.log('here');
       this.showExtra = !this.showExtra;
     },
   },
