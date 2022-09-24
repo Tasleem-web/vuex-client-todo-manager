@@ -1646,3 +1646,7 @@ section {
   right: 5px;
   z-index: 999;
 }
+
+#footer .row {
+  width: 98%;
+}

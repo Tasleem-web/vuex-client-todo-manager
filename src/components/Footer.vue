@@ -1,7 +1,7 @@
 <template>
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="rows">
+    <div class="row">
       <div class="col-lg-4 col-md-6 mt-4 col-xs-12">
         <h2>Services</h2>
         <ul class="list-dev">
