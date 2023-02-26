@@ -2,11 +2,14 @@
   <div class="col-3 mt-3">
     <div class="card h-100 text-left">
       <div class="text-center">
-        <ProductImageSlider :product="product.files" :uniqueKey="product._id" />
+        <ProductImageSlider
+          :product="[product]"
+          :uniqueKey="product.id"
+        />
       </div>
       <div class="card-body">
         <h4 class="card-title">
-          <router-link :to="{ name: 'product', params: { id: product?._id } }">
+          <router-link :to="{ name: 'product', params: { id: product?.id } }">
             {{ product?.title }}
           </router-link>
         </h4>

@@ -5,16 +5,6 @@
     </label>
     <input id="file-upload" type="file" @change="onFileSelected" />
   </div>
-  <div class="d-grid gap-2 mt-3 mb-3">
-    <button
-      class="btn btn-primary"
-      type="button"
-      @click="uploadFile"
-    >
-      <!-- :disabled="files.length == 0" -->
-      Upload file
-    </button>
-  </div>
 </template>
 <script>
 // import { reactive, ref } from "vue";
@@ -27,6 +17,7 @@ export default {
       selectedFile: null,
     };
   },
+  emits: ["input-change"],
   computed: {
     ...mapState({
       files: (state) => state.product.files,
@@ -35,12 +26,15 @@ export default {
   methods: {
     onFileSelected(event) {
       this.selectedFile = event.target.files[0];
+      this.uploadFile();
     },
     ...mapActions("product", ["uploadProductFile"]),
     uploadFile() {
-      let formData = new FormData();
-      formData.append("file", this.selectedFile, this.selectedFile.name);
-      this.uploadProductFile(formData);
+      let data = new FormData();
+      let file = event.target.files[0];
+      data.append("name", file.name);
+      data.append("file", file);
+      this.$emit("input-change", data);
     },
   },
 };

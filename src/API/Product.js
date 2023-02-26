@@ -2,15 +2,12 @@ import API from "./api";
 
 export default {
     all(endPoint) {
-        return API.post(endPoint);
+        // return API.post(endPoint);
+        return API.get(endPoint);
     },
-    getByProductId(endPoint, payload = null) {
-        if (payload) {
-            return API.get(endPoint, {
-                params: {
-                    id: payload
-                }
-            });
+    getByProductId(endPoint, productId = null) {
+        if (productId) {
+            return API.get(endPoint + "/" + productId);
         }
         return API.get(endPoint)
     },
@@ -19,5 +16,8 @@ export default {
     },
     addProduct(endPoint, payload) {
         return API.post(endPoint, payload)
+    },
+    addProductFile(endPoint, payload) {
+        return API.post(endPoint, payload);
     }
 }

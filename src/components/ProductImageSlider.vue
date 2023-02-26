@@ -3,11 +3,11 @@
   <div id="demo" class="carousel slide" data-bs-ride="carousel">
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
-      <template v-for="(file, index) in product" :key="file.id">
+      <template v-for="(file, index) in product" :key="file?.id">
         <button
           type="button"
           :data-bs-target="idx"
-          :data-bs-slide-to="file.id"
+          :data-bs-slide-to="file?.id"
           :class="{ active: index == 0 ? true : false }"
         ></button>
       </template>
@@ -15,13 +15,13 @@
 
     <!-- The slideshow/carousel -->
     <div class="carousel-inner">
-      <template v-for="(file, index) in product" :key="file.id">
+      <template v-for="(file, index) in product" :key="file?.id">
         <div
           class="carousel-item"
           :class="{ active: index === 0 ? true : false }"
         >
           <img
-            :src="'http://localhost:5000/' + file.fileName"
+            :src="'http://localhost:8080/api/v1/product/file/' + file?.imageUrl"
             alt="Los Angeles"
             class="d-block"
             style="width: 100%"

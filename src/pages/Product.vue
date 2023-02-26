@@ -2,7 +2,13 @@
   <div class="row mt-5 border border-primary p-2 rounded">
     <div class="col-4">
       <div class="text-center">
-        <img :src="product?.image" :alt="product?.title" class="img" />
+        <img
+          :src="
+            'http://localhost:8080/api/v1/product/file/' + product?.imageUrl
+          "
+          :alt="product?.title"
+          class="img"
+        />
       </div>
     </div>
     <div class="col-8">
